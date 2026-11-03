@@ -1,0 +1,10 @@
+[project]
+name = "facility-usage-prediction"
+version = "1.0.0"
+description = "Reproducible, temporal next-booking prediction for residential facilities"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"

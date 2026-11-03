@@ -1,0 +1,13 @@
+{
+  "resident_reference": "R-0001",
+  "prediction_cutoff": "2026-07-01T12:00:00+05:30",
+  "predicted_facility": "Gym",
+  "predicted_usage_date": "2026-07-04",
+  "predicted_usage_time": "08:00:06",
+  "predicted_usage_timestamp": "2026-07-04T08:00:06.902752756+05:30",
+  "recommended_notification_timestamp": "2026-07-04T02:59:56.143225117+05:30",
+  "cold_start": false,
+  "confidence_note": "Classifier scores are uncalibrated; no probability claim is made.",
+  "notification_note": "Historical booking-time proxy; notification effectiveness is unvalidated.",
+  "model_dataset_sha256": "294deeef05eb425ab6abba3ff2e715cc988297b85aa282c5ce0bdf2117d9ee4f"
+}

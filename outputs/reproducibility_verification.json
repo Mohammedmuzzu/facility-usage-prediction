@@ -1,0 +1,17 @@
+{
+  "clean_environment_reproduces_identical_dataset_predictions_metrics_and_splits": {
+    "data/facility_bookings.csv": true,
+    "outputs/test_predictions.csv": true,
+    "outputs/evaluation_metrics.json": true,
+    "outputs/split_boundaries.json": true
+  },
+  "workbook_rows": 1413,
+  "workbook_sheets": [
+    "Prediction Review",
+    "Performance Summary",
+    "Detailed Metrics",
+    "Error Analysis",
+    "Dataset Insights"
+  ],
+  "python": "3.11.13"
+}
