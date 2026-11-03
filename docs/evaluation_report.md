@@ -62,6 +62,10 @@ The following groups are diagnostic slices, not causal explanations. Preference 
 | Moderate (5-19) | 190 | 47.89% | 9.32 | 204.01 | 229.10 |
 | Sparse (0-4) | 10 | 20.00% | 8.84 | 291.74 | 222.26 |
 
+The retained final test period contains no calendar-quarter transitions. Seasonal-transition error differences cannot be estimated from this holdout; no seasonal robustness claim is made.
+Historical preference-shift proxy = False: n=128, facility accuracy 40.62%, notification MAE 105.19 hours.
+Historical preference-shift proxy = True: n=1285, facility accuracy 49.65%, notification MAE 134.47 hours.
+
 Lowest facility recall occurs for **Tennis Court** (12.90%, n=155). Class imbalance, exploration, multimodal usage hours, and changing preferences make rare-facility and timing predictions difficult.
 Notification errors can remain large even when facility prediction is correct: an error of one day in scheduled usage can move the implied booking-time proxy by roughly 24 hours. Exact notification equality is intentionally strict and is generally unlikely for a continuous regression output.
 

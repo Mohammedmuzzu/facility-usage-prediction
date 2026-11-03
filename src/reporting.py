@@ -216,6 +216,13 @@ def write_evaluation_markdown(metrics: dict, analysis: dict, split: dict, destin
     for name, values in analysis["activity"].items():
         lines.append(f"| {name} | {values['sample_count']} | {values['facility_accuracy']:.2%} | {values['date_mae_days']:.2f} | {values['time_mae_minutes']:.2f} | {values['notification_mae_hours']:.2f} |")
     worst = min(analysis["actual_facility"].items(), key=lambda item: item[1]["facility_accuracy"])
+    transitions = analysis["season_transition"].get("True")
+    if transitions:
+        lines += ["", f"Calendar-quarter transition slice: n={transitions['sample_count']}, facility accuracy {transitions['facility_accuracy']:.2%}, date MAE {transitions['date_mae_days']:.2f} days."]
+    else:
+        lines += ["", "The retained final test period contains no calendar-quarter transitions. Seasonal-transition error differences cannot be estimated from this holdout; no seasonal robustness claim is made."]
+    for group, values in analysis["preference_shift_proxy"].items():
+        lines += [f"Historical preference-shift proxy = {group}: n={values['sample_count']}, facility accuracy {values['facility_accuracy']:.2%}, notification MAE {values['notification_mae_hours']:.2f} hours."]
     lines += ["", f"Lowest facility recall occurs for **{worst[0]}** ({worst[1]['facility_accuracy']:.2%}, n={worst[1]['sample_count']}). Class imbalance, exploration, multimodal usage hours, and changing preferences make rare-facility and timing predictions difficult.",
               "Notification errors can remain large even when facility prediction is correct: an error of one day in scheduled usage can move the implied booking-time proxy by roughly 24 hours. Exact notification equality is intentionally strict and is generally unlikely for a continuous regression output.",
               "", "Full metrics, all three model variants, subgroup counts, seasonal-transition and drift-proxy slices, and error quantiles are in `outputs/evaluation_report.json`. Every final test row is in the workbook and CSV.", "",

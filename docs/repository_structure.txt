@@ -15,6 +15,7 @@ docs/dataset_profile.md
 docs/evaluation_report.md
 docs/feature_documentation.md
 docs/limitations.md
+docs/repository_structure.txt
 docs/technical_documentation.md
 docs/verification.md
 models/facility/model.joblib
