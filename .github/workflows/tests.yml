@@ -24,6 +24,8 @@ jobs:
       - run: ruff format --check src app scripts tests
       - run: pip-audit --disable-pip --no-deps -r requirements-runtime-lock.txt --format json --output /tmp/dependency-audit.json
       - run: python -m pytest -q --junitxml=/tmp/tests-before.xml
+      - name: Verify submitted model before retraining
+        run: python scripts/generate_predictions.py --resident R-0001 --cutoff '2026-07-01T12:00:00+05:30'
       - run: python scripts/run_pipeline.py
       - run: python -m pytest -q --junitxml=/tmp/tests-after.xml
       - run: docker build -t facility-api:ci .
