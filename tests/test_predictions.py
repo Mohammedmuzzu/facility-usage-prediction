@@ -6,15 +6,34 @@ from src.utils import circular_error
 
 
 def test_circular_midnight_distance():
-    np.testing.assert_allclose(circular_error([1435, 60, 0], [5, 1430, 720]), [10, 70, 720])
+    np.testing.assert_allclose(
+        circular_error([1435, 60, 0], [5, 1430, 720]), [10, 70, 720]
+    )
 
 
 def test_notification_arithmetic_and_constraints():
     cutoff = pd.Series([pd.Timestamp("2026-06-01T10:00:00+05:30")])
-    predicted = assemble_predictions(cutoff, {"facility": ["Gym"], "days": [2.], "minutes": [18 * 60], "lead_hours": [24.]})
-    assert predicted.predicted_notification_timestamp.iloc[0] == pd.Timestamp("2026-06-02T18:00:00+05:30")
-    extreme = assemble_predictions(cutoff, {"facility": ["Gym"], "days": [-3], "minutes": [0], "lead_hours": [100000]})
-    assert cutoff.iloc[0] < extreme.predicted_notification_timestamp.iloc[0] < extreme.predicted_usage_timestamp.iloc[0]
+    predicted = assemble_predictions(
+        cutoff,
+        {
+            "facility": ["Gym"],
+            "days": [2.0],
+            "minutes": [18 * 60],
+            "lead_hours": [24.0],
+        },
+    )
+    assert predicted.predicted_notification_timestamp.iloc[0] == pd.Timestamp(
+        "2026-06-02T18:00:00+05:30"
+    )
+    extreme = assemble_predictions(
+        cutoff,
+        {"facility": ["Gym"], "days": [-3], "minutes": [0], "lead_hours": [100000]},
+    )
+    assert (
+        cutoff.iloc[0]
+        < extreme.predicted_notification_timestamp.iloc[0]
+        < extreme.predicted_usage_timestamp.iloc[0]
+    )
 
 
 def test_saved_inference_cold_start_and_model_availability(bookings, trained):
@@ -34,9 +53,14 @@ def test_all_prediction_outputs_are_valid(examples, trained):
     X, y, splits, _ = examples
     bundle, _ = trained
     test = splits["test"]
-    prediction = predict_components(bundle, X.iloc[test], y.prediction_cutoff.iloc[test])
+    prediction = predict_components(
+        bundle, X.iloc[test], y.prediction_cutoff.iloc[test]
+    )
     cutoff = y.prediction_cutoff.iloc[test].reset_index(drop=True)
     assert (prediction.predicted_usage_timestamp > cutoff).all()
     assert (prediction.predicted_notification_timestamp > cutoff).all()
-    assert (prediction.predicted_notification_timestamp < prediction.predicted_usage_timestamp).all()
-    assert prediction.predicted_lead_hours.between(.25, 720).all()
+    assert (
+        prediction.predicted_notification_timestamp
+        < prediction.predicted_usage_timestamp
+    ).all()
+    assert prediction.predicted_lead_hours.between(0.25, 720).all()

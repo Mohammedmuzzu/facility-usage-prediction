@@ -30,7 +30,9 @@ def test_targets_strictly_future_and_no_target_columns(examples):
     assert not any("target" in column or "persona" in column for column in X)
 
 
-def test_final_test_perturbation_cannot_change_fitting_or_selection(examples, trained, tmp_path):
+def test_final_test_perturbation_cannot_change_fitting_or_selection(
+    examples, trained, tmp_path
+):
     X, y, splits, split = examples
     original, _ = trained
     changed_X, changed_y = X.copy(), y.copy()
@@ -41,10 +43,25 @@ def test_final_test_perturbation_cannot_change_fitting_or_selection(examples, tr
     changed_y.loc[test, "days_until_usage"] = 1000000
     changed_y.loc[test, "lead_hours"] = 1000000
     changed_y.loc[test, "target_usage_timestamp"] += pd.Timedelta(days=2000)
-    refit = fit_models(changed_X, changed_y, splits, {"dataset_sha256": "test-fixture", "split": split}, tmp_path)
-    assert original["metadata"]["validation_candidates"] == refit["metadata"]["validation_candidates"]
-    assert original["metadata"]["selected_configurations"] == refit["metadata"]["selected_configurations"]
+    refit = fit_models(
+        changed_X,
+        changed_y,
+        splits,
+        {"dataset_sha256": "test-fixture", "split": split},
+        tmp_path,
+    )
+    assert (
+        original["metadata"]["validation_candidates"]
+        == refit["metadata"]["validation_candidates"]
+    )
+    assert (
+        original["metadata"]["selected_configurations"]
+        == refit["metadata"]["selected_configurations"]
+    )
     for name in original["models"]:
-        np.testing.assert_array_equal(original["models"][name].predict(X.iloc[test]), refit["models"][name].predict(X.iloc[test]))
+        np.testing.assert_array_equal(
+            original["models"][name].predict(X.iloc[test]),
+            refit["models"][name].predict(X.iloc[test]),
+        )
     assert not set(test) & set(refit["metadata"]["fit_indices"])
     assert not set(test) & set(refit["metadata"]["selection_indices"])

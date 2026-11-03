@@ -1,22 +1,42 @@
 {
-  "health": {
-    "status": "ok",
-    "artifacts_ready": true
-  },
-  "model_info_status": 200,
-  "predict_status": 200,
-  "dashboard_health": "ok",
+  "container_name": "facility-audit-rgjicn",
+  "non_root_uid": 10001,
+  "read_only": true,
+  "capabilities_dropped": true,
+  "liveness_status": 200,
+  "readiness_status": 200,
+  "prediction_status": 200,
+  "invalid_request_status": 422,
   "prediction": {
     "resident_reference": "R-0001",
     "prediction_cutoff": "2026-07-01T12:00:00+05:30",
     "predicted_facility": "Gym",
-    "predicted_usage_date": "2026-07-04",
-    "predicted_usage_time": "08:00:06",
-    "predicted_usage_timestamp": "2026-07-04T08:00:06.902752756+05:30",
-    "recommended_notification_timestamp": "2026-07-04T02:59:56.143225117+05:30",
+    "predicted_usage_date": "2026-07-06",
+    "predicted_usage_time": "08:26:12",
+    "predicted_usage_timestamp": "2026-07-06T08:26:12.491806277+05:30",
+    "recommended_notification_timestamp": "2026-07-06T03:33:36.491806277+05:30",
     "cold_start": false,
     "confidence_note": "Classifier scores are uncalibrated; no probability claim is made.",
     "notification_note": "Historical booking-time proxy; notification effectiveness is unvalidated.",
-    "model_dataset_sha256": "294deeef05eb425ab6abba3ff2e715cc988297b85aa282c5ce0bdf2117d9ee4f"
-  }
+    "model_dataset_sha256": "294deeef05eb425ab6abba3ff2e715cc988297b85aa282c5ce0bdf2117d9ee4f",
+    "release_id": "8eff59305d804e1387d1de9251646c40",
+    "history_count": 73,
+    "prediction_strategy": "validation_selected",
+    "component_routes": {
+      "facility": "ml",
+      "days": "ml",
+      "minutes": "ml",
+      "lead_hours": "resident"
+    },
+    "validation_error_guides": {
+      "elapsed_days_p90_absolute_error": 12.444849681214,
+      "usage_minutes_p90_circular_error": 501.1260937780868,
+      "notification_hours_p90_absolute_error": 294.5234486653233
+    },
+    "prediction_policy": "next observed booking conditional on occurrence; trained at previous booking creation",
+    "warnings": [
+      "This cutoff is later than the latest resident booking; arbitrary-cutoff performance is not prospectively validated"
+    ]
+  },
+  "mode": "development smoke using synthetic historical data"
 }

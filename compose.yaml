@@ -1,0 +1,25 @@
+services:
+  api:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      FACILITY_ENV: production
+      FACILITY_AUTH_FILE: /run/secrets/facility_auth
+      FACILITY_RATE_DB: /tmp/facility-rate.sqlite3
+      FACILITY_MAX_DATA_AGE_HOURS: "24"
+    secrets:
+      - facility_auth
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 1g
+    cpus: 2
+    restart: unless-stopped
+secrets:
+  facility_auth:
+    file: .secrets/auth.json

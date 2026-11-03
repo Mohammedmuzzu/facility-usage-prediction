@@ -1,19 +1,19 @@
 # Evaluation report
 
-Generated from saved models and actual chronological holdout predictions; no metrics are hand-entered.
+Generated from saved models and chronological predictions. The original holdout is a reused regression benchmark after the architecture audit. Independent confirmation is reported separately in outputs/audit/confirmation_report.json. No metrics are hand-entered.
 
 Test records: **1413**. Purged crossing-cutoff examples: **778**.
 
-| Output / metric | ML | Resident baseline | Global baseline | ML improvement vs resident |
+| Metric | champion | ml | resident | global |
 |---|---:|---:|---:|---:|
-| Facility accuracy | 0.4883 | 0.5131 | 0.2824 | -0.0248 |
-| Facility macro F1 | 0.3917 | 0.3777 | 0.0734 | +0.0141 |
-| Days MAE | 5.3889 | 5.6682 | 7.2266 | +0.2793 |
-| Circular time MAE (minutes) | 181.1062 | 196.4013 | 266.4650 | +15.2951 |
-| Notification proxy MAE (hours) | 131.8147 | 134.3071 | 182.8297 | +2.4924 |
+| Facility accuracy | 0.4848 | 0.4848 | 0.5131 | 0.2824 |
+| Facility macro F1 | 0.3866 | 0.3866 | 0.3777 | 0.0734 |
+| Days MAE | 5.2687 | 5.2687 | 5.6682 | 7.2266 |
+| Circular time MAE (minutes) | 181.6832 | 181.6832 | 196.4013 | 266.4650 |
+| Notification proxy MAE (hours) | 128.3234 | 128.2923 | 134.3071 | 182.8297 |
 
-Exact 4/4 match: **0.00%**. Tolerance 4/4 match: **0.50%**.
-Average exact matches: **0.703/4**. Average tolerance matches: **0.985/4**.
+Exact 4/4 match: **0.00%**. Tolerance 4/4 match: **0.64%**.
+Average exact matches: **0.691/4**. Average tolerance matches: **0.994/4**.
 
 Exact means facility, calendar date, clock-hour bucket, and full notification timestamp equality. Tolerance means facility exact, date within one calendar day, time within 60 circular minutes, notification within 3 elapsed hours. No underlying predictions are rounded for equality.
 
@@ -58,18 +58,18 @@ The following groups are diagnostic slices, not causal explanations. Preference 
 
 | Activity group | Samples | Facility accuracy | Date MAE (days) | Time MAE (minutes) | Notification MAE (hours) |
 |---|---:|---:|---:|---:|---:|
-| Frequent (20+) | 1213 | 49.22% | 4.78 | 176.61 | 115.83 |
-| Moderate (5-19) | 190 | 47.89% | 9.32 | 204.01 | 229.10 |
-| Sparse (0-4) | 10 | 20.00% | 8.84 | 291.74 | 222.26 |
+| Frequent (20+) | 1213 | 48.64% | 4.64 | 178.14 | 112.21 |
+| Moderate (5-19) | 190 | 47.89% | 9.12 | 199.03 | 224.46 |
+| Sparse (0-4) | 10 | 40.00% | 10.44 | 282.17 | 256.72 |
 
 The retained final test period contains no calendar-quarter transitions. Seasonal-transition error differences cannot be estimated from this holdout; no seasonal robustness claim is made.
-Historical preference-shift proxy = False: n=128, facility accuracy 40.62%, notification MAE 105.19 hours.
-Historical preference-shift proxy = True: n=1285, facility accuracy 49.65%, notification MAE 134.47 hours.
+Historical preference-shift proxy = False: n=128, facility accuracy 36.72%, notification MAE 96.71 hours.
+Historical preference-shift proxy = True: n=1285, facility accuracy 49.65%, notification MAE 131.47 hours.
 
-Lowest facility recall occurs for **Tennis Court** (12.90%, n=155). Class imbalance, exploration, multimodal usage hours, and changing preferences make rare-facility and timing predictions difficult.
+Lowest facility recall occurs for **Multipurpose Hall** (10.98%, n=82). Class imbalance, exploration, multimodal usage hours, and changing preferences make rare-facility and timing predictions difficult.
 Notification errors can remain large even when facility prediction is correct: an error of one day in scheduled usage can move the implied booking-time proxy by roughly 24 hours. Exact notification equality is intentionally strict and is generally unlikely for a continuous regression output.
 
-Full metrics, all three model variants, subgroup counts, seasonal-transition and drift-proxy slices, and error quantiles are in `outputs/evaluation_report.json`. Every final test row is in the workbook and CSV.
+Full metrics, all model/heuristic variants and the validation-selected serving candidate, subgroup counts, seasonal-transition and drift-proxy slices, and error quantiles are in `outputs/evaluation_report.json`. Every final test row is in the workbook and CSV.
 
 ![Facility confusion matrix](../outputs/figures/facility_confusion_matrix.png)
 ![Usage intervals](../outputs/figures/usage_interval_scatter.png)

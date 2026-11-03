@@ -1,0 +1,679 @@
+{
+  "windows": [
+    {
+      "split": {
+        "validation_start": "2025-08-07 09:40:26+05:30",
+        "test_start": "2025-09-20 17:43:52+05:30",
+        "evaluation_end": "2025-11-24 03:58:52+05:30"
+      },
+      "sample_count": 1137,
+      "metrics": {
+        "sample_count": 1137,
+        "facility": {
+          "accuracy": 0.5523306948109059,
+          "macro_f1": 0.43335786517959934,
+          "weighted_f1": 0.526695412265965,
+          "per_class": {
+            "Gym": {
+              "precision": 0.6572052401746725,
+              "recall": 0.7698209718670077,
+              "f1-score": 0.7090694935217904,
+              "support": 391.0
+            },
+            "Swimming Pool": {
+              "precision": 0.532319391634981,
+              "recall": 0.625,
+              "f1-score": 0.5749486652977412,
+              "support": 224.0
+            },
+            "Badminton Court": {
+              "precision": 0.4765957446808511,
+              "recall": 0.5628140703517588,
+              "f1-score": 0.5161290322580645,
+              "support": 199.0
+            },
+            "Tennis Court": {
+              "precision": 0.28,
+              "recall": 0.11864406779661017,
+              "f1-score": 0.16666666666666666,
+              "support": 118.0
+            },
+            "Clubhouse": {
+              "precision": 0.45535714285714285,
+              "recall": 0.3984375,
+              "f1-score": 0.425,
+              "support": 128.0
+            },
+            "Multipurpose Hall": {
+              "precision": 0.5263157894736842,
+              "recall": 0.12987012987012986,
+              "f1-score": 0.20833333333333334,
+              "support": 77.0
+            },
+            "accuracy": 0.5523306948109059,
+            "macro avg": {
+              "precision": 0.4879655514702219,
+              "recall": 0.43409778998091775,
+              "f1-score": 0.43335786517959934,
+              "support": 1137.0
+            },
+            "weighted avg": {
+              "precision": 0.5302562672833862,
+              "recall": 0.5523306948109059,
+              "f1-score": 0.526695412265965,
+              "support": 1137.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              301,
+              40,
+              27,
+              8,
+              14,
+              1
+            ],
+            [
+              38,
+              140,
+              23,
+              8,
+              14,
+              1
+            ],
+            [
+              42,
+              23,
+              112,
+              16,
+              6,
+              0
+            ],
+            [
+              27,
+              14,
+              56,
+              14,
+              7,
+              0
+            ],
+            [
+              30,
+              29,
+              8,
+              3,
+              51,
+              7
+            ],
+            [
+              20,
+              17,
+              9,
+              1,
+              20,
+              10
+            ]
+          ],
+          "class_order": [
+            "Gym",
+            "Swimming Pool",
+            "Badminton Court",
+            "Tennis Court",
+            "Clubhouse",
+            "Multipurpose Hall"
+          ]
+        },
+        "usage_day": {
+          "mae_days": 6.149225320881643,
+          "median_ae_days": 4.235359957354538,
+          "calendar_date_mae_days": 6.1125769569041335,
+          "weekday_accuracy": 0.13280562884784522,
+          "within_1_days": 0.12225153913808268,
+          "within_2_days": 0.26297273526824977,
+          "within_3_days": 0.386103781882146
+        },
+        "usage_hour": {
+          "circular_mae_minutes": 197.26275767331714,
+          "median_circular_ae_minutes": 126.77922157111675,
+          "within_30_minutes": 0.1565523306948109,
+          "within_60_minutes": 0.2849604221635884,
+          "within_120_minutes": 0.48548812664907653
+        },
+        "notification": {
+          "mae_hours": 142.70960339723538,
+          "median_ae_hours": 99.17460800435417,
+          "standalone_lead_mae_hours": 32.4111970018075,
+          "standalone_lead_median_ae_hours": 9.614638029582938,
+          "within_1_hours": 0.009674582233948988,
+          "within_3_hours": 0.027264731750219876,
+          "within_6_hours": 0.04309586631486367
+        },
+        "overall": {
+          "exact_facility_match_rate": 0.5523306948109059,
+          "exact_date_match_rate": 0.056288478452066845,
+          "exact_hour_match_rate": 0.148636763412489,
+          "exact_notification_timestamp_match_rate": 0.0,
+          "exact_4_of_4_rate": 0.0,
+          "average_exact_matches": 0.7572559366754618,
+          "tolerance_4_of_4_rate": 0.003518029903254178,
+          "average_tolerance_matches": 1.0624450307827618,
+          "tolerance_facility_rate": 0.5523306948109059,
+          "tolerance_date_rate": 0.19788918205804748,
+          "tolerance_time_rate": 0.2849604221635884,
+          "tolerance_notification_rate": 0.027264731750219876
+        }
+      },
+      "quarter_transition_samples": 199,
+      "component_routes": {
+        "facility": "resident",
+        "days": "ml",
+        "minutes": "ml",
+        "lead_hours": "ml"
+      }
+    },
+    {
+      "split": {
+        "validation_start": "2025-10-12 04:48:23+05:30",
+        "test_start": "2025-11-24 03:58:52+05:30",
+        "evaluation_end": "2026-01-26 19:45:24+05:30"
+      },
+      "sample_count": 1134,
+      "metrics": {
+        "sample_count": 1134,
+        "facility": {
+          "accuracy": 0.5017636684303352,
+          "macro_f1": 0.40037021072117235,
+          "weighted_f1": 0.4892535007528825,
+          "per_class": {
+            "Gym": {
+              "precision": 0.6912442396313364,
+              "recall": 0.7481296758104738,
+              "f1-score": 0.718562874251497,
+              "support": 401.0
+            },
+            "Swimming Pool": {
+              "precision": 0.4742268041237113,
+              "recall": 0.5380116959064327,
+              "f1-score": 0.5041095890410959,
+              "support": 171.0
+            },
+            "Badminton Court": {
+              "precision": 0.42990654205607476,
+              "recall": 0.45098039215686275,
+              "f1-score": 0.44019138755980863,
+              "support": 204.0
+            },
+            "Tennis Court": {
+              "precision": 0.24770642201834864,
+              "recall": 0.19708029197080293,
+              "f1-score": 0.21951219512195122,
+              "support": 137.0
+            },
+            "Clubhouse": {
+              "precision": 0.32857142857142857,
+              "recall": 0.35384615384615387,
+              "f1-score": 0.34074074074074073,
+              "support": 130.0
+            },
+            "Multipurpose Hall": {
+              "precision": 0.27906976744186046,
+              "recall": 0.13186813186813187,
+              "f1-score": 0.1791044776119403,
+              "support": 91.0
+            },
+            "accuracy": 0.5017636684303352,
+            "macro avg": {
+              "precision": 0.40845420064046006,
+              "recall": 0.4033193902598096,
+              "f1-score": 0.40037021072117235,
+              "support": 1134.0
+            },
+            "weighted avg": {
+              "precision": 0.4832699052423004,
+              "recall": 0.5017636684303352,
+              "f1-score": 0.4892535007528825,
+              "support": 1134.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              300,
+              37,
+              25,
+              17,
+              20,
+              2
+            ],
+            [
+              31,
+              92,
+              18,
+              9,
+              15,
+              6
+            ],
+            [
+              26,
+              20,
+              92,
+              44,
+              18,
+              4
+            ],
+            [
+              27,
+              10,
+              53,
+              27,
+              13,
+              7
+            ],
+            [
+              30,
+              20,
+              17,
+              5,
+              46,
+              12
+            ],
+            [
+              20,
+              15,
+              9,
+              7,
+              28,
+              12
+            ]
+          ],
+          "class_order": [
+            "Gym",
+            "Swimming Pool",
+            "Badminton Court",
+            "Tennis Court",
+            "Clubhouse",
+            "Multipurpose Hall"
+          ]
+        },
+        "usage_day": {
+          "mae_days": 7.071541338333704,
+          "median_ae_days": 4.769750800225117,
+          "calendar_date_mae_days": 7.022045855379189,
+          "weekday_accuracy": 0.15961199294532627,
+          "within_1_days": 0.13756613756613756,
+          "within_2_days": 0.24426807760141092,
+          "within_3_days": 0.34656084656084657
+        },
+        "usage_hour": {
+          "circular_mae_minutes": 200.6904302587761,
+          "median_circular_ae_minutes": 124.70285554238319,
+          "within_30_minutes": 0.13932980599647266,
+          "within_60_minutes": 0.2804232804232804,
+          "within_120_minutes": 0.49382716049382713
+        },
+        "notification": {
+          "mae_hours": 157.04036699987017,
+          "median_ae_hours": 115.24100441793098,
+          "standalone_lead_mae_hours": 43.73809082892416,
+          "standalone_lead_median_ae_hours": 9.5125,
+          "within_1_hours": 0.004409171075837742,
+          "within_3_hours": 0.014991181657848324,
+          "within_6_hours": 0.043209876543209874
+        },
+        "overall": {
+          "exact_facility_match_rate": 0.5017636684303352,
+          "exact_date_match_rate": 0.07142857142857142,
+          "exact_hour_match_rate": 0.12962962962962962,
+          "exact_notification_timestamp_match_rate": 0.0,
+          "exact_4_of_4_rate": 0.0,
+          "average_exact_matches": 0.7028218694885362,
+          "tolerance_4_of_4_rate": 0.0026455026455026454,
+          "average_tolerance_matches": 0.9885361552028219,
+          "tolerance_facility_rate": 0.5017636684303352,
+          "tolerance_date_rate": 0.19135802469135801,
+          "tolerance_time_rate": 0.2804232804232804,
+          "tolerance_notification_rate": 0.014991181657848324
+        }
+      },
+      "quarter_transition_samples": 323,
+      "component_routes": {
+        "facility": "ml",
+        "days": "ml",
+        "minutes": "ml",
+        "lead_hours": "global"
+      }
+    },
+    {
+      "split": {
+        "validation_start": "2025-12-15 22:45:27+05:30",
+        "test_start": "2026-01-26 17:54:42+05:30",
+        "evaluation_end": "2026-03-28 08:35:36+05:30"
+      },
+      "sample_count": 1148,
+      "metrics": {
+        "sample_count": 1148,
+        "facility": {
+          "accuracy": 0.4616724738675958,
+          "macro_f1": 0.35951986639188743,
+          "weighted_f1": 0.4461721040646082,
+          "per_class": {
+            "Gym": {
+              "precision": 0.6044226044226044,
+              "recall": 0.727810650887574,
+              "f1-score": 0.6604026845637584,
+              "support": 338.0
+            },
+            "Swimming Pool": {
+              "precision": 0.550185873605948,
+              "recall": 0.5103448275862069,
+              "f1-score": 0.5295169946332737,
+              "support": 290.0
+            },
+            "Badminton Court": {
+              "precision": 0.32857142857142857,
+              "recall": 0.40350877192982454,
+              "f1-score": 0.36220472440944884,
+              "support": 171.0
+            },
+            "Tennis Court": {
+              "precision": 0.1111111111111111,
+              "recall": 0.07258064516129033,
+              "f1-score": 0.08780487804878048,
+              "support": 124.0
+            },
+            "Clubhouse": {
+              "precision": 0.35384615384615387,
+              "recall": 0.33093525179856115,
+              "f1-score": 0.3420074349442379,
+              "support": 139.0
+            },
+            "Multipurpose Hall": {
+              "precision": 0.23529411764705882,
+              "recall": 0.13953488372093023,
+              "f1-score": 0.17518248175182483,
+              "support": 86.0
+            },
+            "accuracy": 0.4616724738675958,
+            "macro avg": {
+              "precision": 0.3639052148673841,
+              "recall": 0.3641191718473978,
+              "f1-score": 0.35951986639188743,
+              "support": 1148.0
+            },
+            "weighted avg": {
+              "precision": 0.43835552718320536,
+              "recall": 0.4616724738675958,
+              "f1-score": 0.4461721040646082,
+              "support": 1148.0
+            }
+          },
+          "confusion_matrix": [
+            [
+              246,
+              32,
+              33,
+              11,
+              8,
+              8
+            ],
+            [
+              63,
+              148,
+              25,
+              12,
+              28,
+              14
+            ],
+            [
+              25,
+              27,
+              69,
+              34,
+              13,
+              3
+            ],
+            [
+              28,
+              24,
+              51,
+              9,
+              8,
+              4
+            ],
+            [
+              29,
+              24,
+              21,
+              9,
+              46,
+              10
+            ],
+            [
+              16,
+              14,
+              11,
+              6,
+              27,
+              12
+            ]
+          ],
+          "class_order": [
+            "Gym",
+            "Swimming Pool",
+            "Badminton Court",
+            "Tennis Court",
+            "Clubhouse",
+            "Multipurpose Hall"
+          ]
+        },
+        "usage_day": {
+          "mae_days": 5.776141719868103,
+          "median_ae_days": 4.265351941423412,
+          "calendar_date_mae_days": 5.763937282229965,
+          "weekday_accuracy": 0.15069686411149827,
+          "within_1_days": 0.12717770034843207,
+          "within_2_days": 0.23519163763066203,
+          "within_3_days": 0.3623693379790941
+        },
+        "usage_hour": {
+          "circular_mae_minutes": 189.08590232234423,
+          "median_circular_ae_minutes": 118.03715327755009,
+          "within_30_minutes": 0.14547038327526132,
+          "within_60_minutes": 0.2787456445993031,
+          "within_120_minutes": 0.5043554006968641
+        },
+        "notification": {
+          "mae_hours": 137.9184749689176,
+          "median_ae_hours": 103.20037956883486,
+          "standalone_lead_mae_hours": 39.239332100412284,
+          "standalone_lead_median_ae_hours": 11.681374271676729,
+          "within_1_hours": 0.0078397212543554,
+          "within_3_hours": 0.0156794425087108,
+          "within_6_hours": 0.029616724738675958
+        },
+        "overall": {
+          "exact_facility_match_rate": 0.4616724738675958,
+          "exact_date_match_rate": 0.06968641114982578,
+          "exact_hour_match_rate": 0.13850174216027875,
+          "exact_notification_timestamp_match_rate": 0.0,
+          "exact_4_of_4_rate": 0.0,
+          "average_exact_matches": 0.6698606271777003,
+          "tolerance_4_of_4_rate": 0.002613240418118467,
+          "average_tolerance_matches": 0.9416376306620209,
+          "tolerance_facility_rate": 0.4616724738675958,
+          "tolerance_date_rate": 0.18554006968641115,
+          "tolerance_time_rate": 0.2787456445993031,
+          "tolerance_notification_rate": 0.0156794425087108
+        }
+      },
+      "quarter_transition_samples": 18,
+      "component_routes": {
+        "facility": "ml",
+        "days": "ml",
+        "minutes": "ml",
+        "lead_hours": "ml"
+      }
+    }
+  ],
+  "original_final_test_accessed": false,
+  "note": "Expanding train/validation/evaluation windows strictly inside development; diagnostic only, no test-driven retuning.",
+  "cold_start_cohort": {
+    "sample_count": 3,
+    "metrics": {
+      "sample_count": 3,
+      "facility": {
+        "accuracy": 0.6666666666666666,
+        "macro_f1": 0.13333333333333333,
+        "weighted_f1": 0.5333333333333333,
+        "per_class": {
+          "Gym": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1-score": 0.8,
+            "support": 2.0
+          },
+          "Swimming Pool": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "Badminton Court": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 1.0
+          },
+          "Tennis Court": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "Clubhouse": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "Multipurpose Hall": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 0.0
+          },
+          "accuracy": 0.6666666666666666,
+          "macro avg": {
+            "precision": 0.1111111111111111,
+            "recall": 0.16666666666666666,
+            "f1-score": 0.13333333333333333,
+            "support": 3.0
+          },
+          "weighted avg": {
+            "precision": 0.4444444444444444,
+            "recall": 0.6666666666666666,
+            "f1-score": 0.5333333333333333,
+            "support": 3.0
+          }
+        },
+        "confusion_matrix": [
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "class_order": [
+          "Gym",
+          "Swimming Pool",
+          "Badminton Court",
+          "Tennis Court",
+          "Clubhouse",
+          "Multipurpose Hall"
+        ]
+      },
+      "usage_day": {
+        "mae_days": 12.945289351851853,
+        "median_ae_days": 13.167916666666667,
+        "calendar_date_mae_days": 13.0,
+        "weekday_accuracy": 0.0,
+        "within_1_days": 0.0,
+        "within_2_days": 0.0,
+        "within_3_days": 0.0
+      },
+      "usage_hour": {
+        "circular_mae_minutes": 465.0,
+        "median_circular_ae_minutes": 675.0,
+        "within_30_minutes": 0.3333333333333333,
+        "within_60_minutes": 0.3333333333333333,
+        "within_120_minutes": 0.3333333333333333
+      },
+      "notification": {
+        "mae_hours": 317.8888888888889,
+        "median_ae_hours": 317.04583333333335,
+        "standalone_lead_mae_hours": 9.235555555555555,
+        "standalone_lead_median_ae_hours": 9.690833333333334,
+        "within_1_hours": 0.0,
+        "within_3_hours": 0.0,
+        "within_6_hours": 0.0
+      },
+      "overall": {
+        "exact_facility_match_rate": 0.6666666666666666,
+        "exact_date_match_rate": 0.0,
+        "exact_hour_match_rate": 0.0,
+        "exact_notification_timestamp_match_rate": 0.0,
+        "exact_4_of_4_rate": 0.0,
+        "average_exact_matches": 0.6666666666666666,
+        "tolerance_4_of_4_rate": 0.0,
+        "average_tolerance_matches": 1.0,
+        "tolerance_facility_rate": 0.6666666666666666,
+        "tolerance_date_rate": 0.0,
+        "tolerance_time_rate": 0.3333333333333333,
+        "tolerance_notification_rate": 0.0
+      }
+    },
+    "note": "Separate first-observation cohort at one second before the observed booking; not the standard previous-event task or a booking-occurrence estimate."
+  }
+}

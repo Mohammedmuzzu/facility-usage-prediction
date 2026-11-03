@@ -1,0 +1,28 @@
+{
+  "strategy": "70/15/15 target creation chronology; purge validation/test cutoffs before model-ready boundaries",
+  "validation_start": "2026-02-05 15:01:28+05:30",
+  "test_start": "2026-04-16 20:17:23+05:30",
+  "counts": {
+    "train": 8400,
+    "validation": 1409,
+    "test": 1413
+  },
+  "purged_examples": 778,
+  "ranges": {
+    "train": {
+      "target_start": "2025-01-04 11:55:55+05:30",
+      "target_end": "2026-02-05 14:16:14+05:30",
+      "earliest_cutoff": "2025-01-02 02:34:51+05:30"
+    },
+    "validation": {
+      "target_start": "2026-02-06 10:28:14+05:30",
+      "target_end": "2026-04-16 20:05:03+05:30",
+      "earliest_cutoff": "2026-02-05 15:01:28+05:30"
+    },
+    "test": {
+      "target_start": "2026-04-18 07:08:42+05:30",
+      "target_end": "2026-06-30 12:03:56+05:30",
+      "earliest_cutoff": "2026-04-16 20:17:23+05:30"
+    }
+  }
+}

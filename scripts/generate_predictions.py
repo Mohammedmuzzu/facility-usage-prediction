@@ -1,5 +1,7 @@
+import _bootstrap  # noqa: F401
+
 """Generate the full test review without retraining; optionally predict a new resident."""
-import _bootstrap
+
 import argparse
 import json
 from src.config import ROOT
@@ -15,7 +17,10 @@ if __name__ == "__main__":
     if args.resident:
         if not args.cutoff:
             parser.error("--resident requires --cutoff")
-        engine = PredictionEngine(ROOT / "models/model_bundle.joblib", load_bookings(ROOT / "data/facility_bookings.csv"))
+        engine = PredictionEngine(
+            ROOT / "models/model_bundle.joblib",
+            load_bookings(ROOT / "data/facility_bookings.csv"),
+        )
         print(json.dumps(engine.predict(args.resident, args.cutoff), indent=2))
     else:
         evaluate()

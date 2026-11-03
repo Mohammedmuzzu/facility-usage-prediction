@@ -33,7 +33,7 @@
   "lead_time_hours": {
     "count": 12500.0,
     "mean": 39.83248906666667,
-    "std": 72.21505493588647,
+    "std": 72.21505493588649,
     "min": 0.25,
     "10%": 2.105166666666667,
     "50%": 12.048194444444444,
@@ -43,6 +43,7 @@
   },
   "residents_with_at_most_5_bookings": 97,
   "imbalance_ratio": 5.589572192513369,
+  "missing_facilities": [],
   "generation_config": {
     "residents": 500,
     "bookings": 12500,

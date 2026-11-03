@@ -3,7 +3,19 @@ import pytest
 from src.data_validation import validate_bookings
 
 
-@pytest.mark.parametrize("issue", ["duplicate", "resident", "facility", "missing", "reversed", "too_long", "unordered", "naive"])
+@pytest.mark.parametrize(
+    "issue",
+    [
+        "duplicate",
+        "resident",
+        "facility",
+        "missing",
+        "reversed",
+        "too_long",
+        "unordered",
+        "naive",
+    ],
+)
 def test_rejects_bad_data(bookings, config, issue):
     bad = bookings.copy()
     if issue == "duplicate":
@@ -17,7 +29,9 @@ def test_rejects_bad_data(bookings, config, issue):
     elif issue == "reversed":
         bad.loc[0, "usage_timestamp"] = bad.loc[0, "booking_timestamp"]
     elif issue == "too_long":
-        bad.loc[0, "usage_timestamp"] = bad.loc[0, "booking_timestamp"] + pd.Timedelta(days=40)
+        bad.loc[0, "usage_timestamp"] = bad.loc[0, "booking_timestamp"] + pd.Timedelta(
+            days=40
+        )
     elif issue == "unordered":
         bad = bad.iloc[::-1]
     else:

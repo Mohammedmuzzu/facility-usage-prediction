@@ -1,6 +1,12 @@
 import os
+
 os.environ.setdefault("OMP_NUM_THREADS", "2")
-os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/facility-test-matplotlib" if os.path.exists("/private/tmp") else "/tmp/facility-test-matplotlib")
+os.environ.setdefault(
+    "MPLCONFIGDIR",
+    "/private/tmp/facility-test-matplotlib"
+    if os.path.exists("/private/tmp")
+    else "/tmp/facility-test-matplotlib",
+)
 import pytest
 from src.config import GenerationConfig
 from src.data_generator import generate_bookings
@@ -27,9 +33,15 @@ def examples(bookings):
 
 
 @pytest.fixture(scope="session")
-def trained(examples, tmp_path_factory):
+def trained(examples, bookings, tmp_path_factory):
     X, y, splits, split = examples
     root = tmp_path_factory.mktemp("trained")
-    metadata = {"dataset_sha256": "test-fixture", "split": split}
+    from src.artifacts import history_contract
+
+    metadata = {
+        "dataset_sha256": "test-fixture",
+        "split": split,
+        "history_contract": history_contract(bookings),
+    }
     bundle = fit_models(X, y, splits, metadata, root)
     return bundle, root

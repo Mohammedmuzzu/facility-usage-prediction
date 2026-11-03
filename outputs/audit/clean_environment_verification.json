@@ -1,0 +1,11 @@
+{
+  "identical": {
+    "data/facility_bookings.csv": true,
+    "outputs/test_predictions.csv": true,
+    "outputs/evaluation_metrics.json": true,
+    "outputs/split_boundaries.json": true
+  },
+  "tests_passed": 73,
+  "fresh_source_and_artifact_generation": true,
+  "final_hashed_lock_verified": true
+}

@@ -1,18 +1,48 @@
-name: Verify reproducible ML pipeline
+name: Verify ML and service release
 on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  test:
+  verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     env:
       OMP_NUM_THREADS: '2'
       MPLCONFIGDIR: /tmp/facility-matplotlib
+      FACILITY_RATE_DB: /tmp/facility-ci-rate.sqlite3
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
-      - run: pip install -r requirements-dev.txt
-      - run: python -m pytest -q
+      - run: python -m pip install --require-hashes -r requirements-lock.txt
+      - run: ruff check src app scripts tests
+      - run: ruff format --check src app scripts tests
+      - run: pip-audit --disable-pip --no-deps -r requirements-runtime-lock.txt --format json --output /tmp/dependency-audit.json
+      - run: python -m pytest -q --junitxml=/tmp/tests-before.xml
       - run: python scripts/run_pipeline.py
-      - run: python -m pytest -q
+      - run: python -m pytest -q --junitxml=/tmp/tests-after.xml
+      - run: docker build -t facility-api:ci .
+      - name: Container health and prediction smoke
+        run: |
+          docker run -d --name facility-smoke --read-only --tmpfs /tmp -e FACILITY_ENV=development -p 127.0.0.1:8765:8000 facility-api:ci
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8765/ready; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:8765/ready
+          curl --fail -H 'Content-Type: application/json' -d '{"resident_reference":"R-0001","prediction_cutoff":"2026-07-01T12:00:00+05:30"}' http://127.0.0.1:8765/predict
+          docker stop facility-smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verification-evidence
+          path: |
+            /tmp/tests-*.xml
+            /tmp/dependency-audit.json
+            outputs/evaluation_metrics.json
+            outputs/evaluation_report.json

@@ -6,6 +6,7 @@ For resident r and cutoff c, H contains only records for r with booking creation
 |---|---|---|
 | total_bookings, cold_start | len(H); indicator len(H)<3 | 0, 1 |
 | days_since_last | (c - latest creation) / 86400 seconds | 0 |
+| previous_booking_gap_days | Latest consecutive creation gap, days | 14 days when <2 records |
 | mean_interval, median_interval | Consecutive creation gaps, days | 14 days when <2 records |
 | frequency_per_30d | len(H) * 30 / max(30, observation span in days) | 0 |
 | regularity_cv | Population std of creation gaps / max(mean gap, 0.01) | 1 |
@@ -17,7 +18,7 @@ For resident r and cutoff c, H contains only records for r with booking creation
 | prediction_weekday/hour/month/season/weekend | Local cutoff calendar context; season=(month mod 12)//3 | Always known |
 | previous_usage_weekday/hour | Latest known booking's scheduled usage context | -1 |
 | preferred_weekday/hour | Historical scheduled usage mode; ties choose smallest | -1 / 12 |
-| usage_sin, usage_cos | Mean sin/cos(2π * minute / 1440) across H | 0 / -1 (noon) |
+| usage_sin, usage_cos | Mean sin/cos(2π * precise minute / 1440), including seconds and nanoseconds across H | 0 / -1 (noon) |
 | last_usage_offset_days | Latest known scheduled usage minus cutoff, days | 0 |
 | facility_i_count | Count for facility i | 0 |
 | facility_i_preference | (count_i + 1) / (len(H) + 6) | 1/6 |

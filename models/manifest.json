@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "release_id": "8eff59305d804e1387d1de9251646c40",
+  "dependencies": {
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "matplotlib": "3.10.3",
+    "joblib": "1.5.1",
+    "openpyxl": "3.1.5",
+    "fastapi": "0.162.0",
+    "streamlit": "1.66.1"
+  },
+  "files": {
+    "model_metadata.json": "884dfc390c46d49a52569d26d17561a1f99a66b5f2b587da7d9e5ee50a33f044",
+    "model_bundle.joblib": "e002e701ce670bed0f5877f92d9c0cb356885b69d0bcaabc088d18af06468b1e",
+    "usage_days/model.joblib": "94dc637fa31d0307a2dc51452320d82b97a01fdd3139f7a7f0acaa2ea5d1beb3",
+    "usage_cos/model.joblib": "cedcf45783b31777c45e99d39313f22425e641f399d6ca009552636460c8d7d4",
+    "usage_sin/model.joblib": "da9e64e4315cdedb97b987b8e94a5a80419f3d89adb955b951dbe6a79cd336ce",
+    "lead_hours/model.joblib": "27687dad9401f3c243c63aea2631eac1d65386714cddc946aafb82418d13420b",
+    "facility/model.joblib": "d4ab383823dc5311967b23ba61fc40e54070f8a1403732dc66251a8181c9f31f"
+  }
+}

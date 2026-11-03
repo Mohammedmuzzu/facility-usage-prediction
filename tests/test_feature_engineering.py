@@ -9,11 +9,16 @@ def test_cutoff_counts_ordering_and_finite_features(bookings):
     history = builder.histories[resident]
     cutoff = history.booking_timestamp.iloc[4]
     features = builder.build(resident, cutoff)
-    assert features["total_bookings"] == len(history[history.booking_timestamp <= cutoff])
+    assert features["total_bookings"] == len(
+        history[history.booking_timestamp <= cutoff]
+    )
     assert features["most_recent_facility"] == history.facility_reference.iloc[4]
     assert sum(features[f"facility_{i}_preference"] for i in range(6)) == 1
     assert np.isfinite([v for v in features.values() if not isinstance(v, str)]).all()
-    assert all(group.booking_timestamp.is_monotonic_increasing for group in builder.histories.values())
+    assert all(
+        group.booking_timestamp.is_monotonic_increasing
+        for group in builder.histories.values()
+    )
 
 
 def test_cold_start_and_first_history(bookings):
@@ -24,4 +29,9 @@ def test_cold_start_and_first_history(bookings):
     assert features["cold_start"] == 1
     assert features["most_frequent_facility"] == "Unknown"
     first = bookings.iloc[0]
-    assert builder.build(first.resident_reference, first.booking_timestamp)["total_bookings"] >= 1
+    assert (
+        builder.build(first.resident_reference, first.booking_timestamp)[
+            "total_bookings"
+        ]
+        >= 1
+    )
